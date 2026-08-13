@@ -2,7 +2,7 @@
 
 a simple login and dashboard pages.
 
-STD: https://docs.google.com/spreadsheets/d/1P\_9KhZFZuKIEkA3hC6gEskjQlyBUuG7la9QmSw2AZWY/edit?usp=sharing
+STD: https://docs.google.com/spreadsheets/d/1P_9KhZFZuKIEkA3hC6gEskjQlyBUuG7la9QmSw2AZWY/edit?usp=sharing
 
 
 
