@@ -76,8 +76,8 @@ def test_locked_user(driver, locked_username_input, locked_password_input):
     ]
 )
 
-def test_casesensitive_user_password(driver, casesensitive_username_input, casesensitive_password_input):
-    # testing locked user
+def test_username_and_password_are_case_sensitive(driver, casesensitive_username_input, casesensitive_password_input):
+    # testing case-sensitive user
     wait = WebDriverWait(driver, 5)
     driver.get(values.site)
 
@@ -107,8 +107,8 @@ def test_casesensitive_user_password(driver, casesensitive_username_input, cases
 )
 
 
-def test_empty_username_password(driver, test_username, test_password):
-    # testing locked user
+def test_login_requires_username_and_password(driver, test_username, test_password):
+    # testing empty field
     wait = WebDriverWait(driver, 5)
     driver.get(values.site)
 
@@ -129,7 +129,7 @@ def test_empty_username_password(driver, test_username, test_password):
 
 
 def test_forgot_password(driver):
-    # testing locked user
+    # Verify that clicking Forgot Password displays the reset confirmation
     wait = WebDriverWait(driver, 5)
     driver.get(values.site)
 
