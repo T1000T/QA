@@ -73,7 +73,7 @@ def test_locked_user(driver, locked_username_input, locked_password_input):
         ("ADMIN", "Password123"),
         ("admin", "password123"),
         ("admin", "PASSWORD123")
-        ]
+    ]
 )
 
 def test_casesensitive_user_password(driver, casesensitive_username_input, casesensitive_password_input):
