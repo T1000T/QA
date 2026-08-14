@@ -1,8 +1,5 @@
-import values
 import pytest
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from login_page import LoginPage
 
 
 @pytest.mark.parametrize(
@@ -19,23 +16,16 @@ from selenium.webdriver.support import expected_conditions as EC
 
 def test_username_password_out_of_boundaries(driver, username_input_boundary, password_input_boundary):
     # testing out of boundaries
-    wait = WebDriverWait(driver, 2)
-    driver.get(values.site)
+    login_page = LoginPage(driver)
 
-    # Input the parameterized username
-    username = wait.until(EC.visibility_of_element_located((By.ID, values.username_field)))
-    username.send_keys(username_input_boundary)
+    login_page.open()
+    login_page.enter_username(username_input_boundary)
+    login_page.enter_password(password_input_boundary)
+    login_page.click_login()
 
-    # Input the parameterized password
-    password = driver.find_element(By.ID, values.password_field)
-    password.send_keys(password_input_boundary)
+    message = login_page.get_message()
 
-    login_button = driver.find_element(By.ID, values.signin_button)
-    login_button.click()
-
-    error_message = wait.until(EC.visibility_of_element_located((By.ID, values.logon_message)))
-
-    assert "Username must be between 3 and 20 characters" in error_message.text or "Password must be between 8 and 30 characters" in error_message.text
+    assert "Username must be between 3 and 20 characters" in message or "Password must be between 8 and 30 characters" in message
 
 
 @pytest.mark.parametrize(
@@ -49,23 +39,16 @@ def test_username_password_out_of_boundaries(driver, username_input_boundary, pa
 
 def test_password_length(driver, username_input_length, password_input_length):
     # testing short/long password
-    wait = WebDriverWait(driver, 2)
-    driver.get(values.site)
+    login_page = LoginPage(driver)
 
-    # Input the parameterized username
-    username = wait.until(EC.visibility_of_element_located((By.ID, values.username_field)))
-    username.send_keys(username_input_length)
+    login_page.open()
+    login_page.enter_username(username_input_length)
+    login_page.enter_password(password_input_length)
+    login_page.click_login()
 
-    # Input the parameterized password
-    password = driver.find_element(By.ID, values.password_field)
-    password.send_keys(password_input_length)
+    message = login_page.get_message()
 
-    login_button = driver.find_element(By.ID, values.signin_button)
-    login_button.click()
-
-    error_message = wait.until(EC.visibility_of_element_located((By.ID, values.logon_message)))
-
-    assert "Password must be between 8 and 30 characters" in error_message.text
+    assert "Password must be between 8 and 30 characters" in message
 
 
 @pytest.mark.parametrize(
@@ -78,23 +61,16 @@ def test_password_length(driver, username_input_length, password_input_length):
 
 def test_username_password_mismatch(driver, username_input_mismatch, password_input_mismatch):
     # testing password mismatch
-    wait = WebDriverWait(driver, 2)
-    driver.get(values.site)
+    login_page = LoginPage(driver)
 
-    # Input the parameterized username
-    username = wait.until(EC.visibility_of_element_located((By.ID, values.username_field)))
-    username.send_keys(username_input_mismatch)
+    login_page.open()
+    login_page.enter_username(username_input_mismatch)
+    login_page.enter_password(password_input_mismatch)
+    login_page.click_login()
 
-    # Input the parameterized password
-    password = driver.find_element(By.ID, values.password_field)
-    password.send_keys(password_input_mismatch)
+    message = login_page.get_message()
 
-    login_button = driver.find_element(By.ID, values.signin_button)
-    login_button.click()
-
-    error_message = wait.until(EC.visibility_of_element_located((By.ID, values.logon_message)))
-
-    assert "Invalid username or password" in error_message.text
+    assert "Invalid username or password" in message
 
 
 @pytest.mark.parametrize(
@@ -108,20 +84,13 @@ def test_username_password_mismatch(driver, username_input_mismatch, password_in
 
 def test_username_password_whitespace(driver, username_input, password_input_whitespace):
     # testing password whitespace
-    wait = WebDriverWait(driver, 2)
-    driver.get(values.site)
+    login_page = LoginPage(driver)
 
-    # Input the parameterized username
-    username = wait.until(EC.visibility_of_element_located((By.ID, values.username_field)))
-    username.send_keys(username_input)
+    login_page.open()
+    login_page.enter_username(username_input)
+    login_page.enter_password(password_input_whitespace)
+    login_page.click_login()
 
-    # Input the parameterized password
-    password = driver.find_element(By.ID, values.password_field)
-    password.send_keys(password_input_whitespace)
+    message = login_page.get_message()
 
-    login_button = driver.find_element(By.ID, values.signin_button)
-    login_button.click()
-
-    error_message = wait.until(EC.visibility_of_element_located((By.ID, values.logon_message)))
-
-    assert "Invalid username or password" in error_message.text
+    assert "Invalid username or password" in message
