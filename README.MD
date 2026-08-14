@@ -23,13 +23,14 @@ The project includes:
 │
 ├── tests/
 │   ├── positive_test.py
-│   └── negative_test.py
+│   ├── negative_test.py
 |   ├── conftest.py
-|   └── values.py
+|   ├── values.py
+|   └── login_page.py
 ├── test site/
-│   ├── requirements/
-│       ├── Software_Requirements.md
-│   ├── app/
+│   └── requirements/
+│       └── Software_Requirements.md
+│   └── app/
 │       ├── app.js
 │       ├── dashboard.html
 │       ├── aindex.html
@@ -57,6 +58,10 @@ This allows pytest to automatically discover and execute the tests.
 This file contains reusable **fixtures and setup functions**.
 
 Instead of defining the same setup logic inside every test function, it can be defined once in `conftest.py` and reused across the test suite.
+
+### `login_page.py`
+
+This file contains reusable class for browser initialize and login page features.
 
 ### `values.py`
 
