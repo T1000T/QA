@@ -1,6 +1,6 @@
 from os import path
 
-Path = path.abspath("..\\test site\\app\\index.html")
+Path = path.abspath("../test site/app/index.html")
 site = Path
 username_field = "username"
 password_field = "password"
