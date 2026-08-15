@@ -1,16 +1,9 @@
 import pytest
+from automation.test_data.login_data import *
 
 # successful_login
 @pytest.mark.positive
-@pytest.mark.parametrize(
-    "username_input, password_input",
-    [
-        ("admin", "Password123"),
-        (" admin", "Password123"),
-        ("admin ", "Password123"),
-        ("user", "UserPass123")
-    ]
-)
+@pytest.mark.parametrize("username_input, password_input", successful_login)
 
 
 def test_successful_login(login_page, username_input, password_input):
@@ -25,12 +18,7 @@ def test_successful_login(login_page, username_input, password_input):
 
 # locked user
 @pytest.mark.positive
-@pytest.mark.parametrize(
-    "locked_username_input, locked_password_input",
-    [
-        ("locked", "Locked123")
-    ]
-)
+@pytest.mark.parametrize("locked_username_input, locked_password_input", locked_user)
 
 def test_locked_user(login_page, locked_username_input, locked_password_input):
     login_page.open()
@@ -42,15 +30,8 @@ def test_locked_user(login_page, locked_username_input, locked_password_input):
 
 # case-sensitive
 @pytest.mark.positive
-@pytest.mark.parametrize(
-    "casesensitive_username_input, casesensitive_password_input",
-    [
-        ("Admin", "Password123"),
-        ("ADMIN", "Password123"),
-        ("admin", "password123"),
-        ("admin", "PASSWORD123")
-    ]
-)
+@pytest.mark.parametrize("casesensitive_username_input, casesensitive_password_input", casesensitive)
+
 
 def test_username_and_password_are_case_sensitive(login_page, casesensitive_username_input, casesensitive_password_input):
     login_page.open()
@@ -64,14 +45,7 @@ def test_username_and_password_are_case_sensitive(login_page, casesensitive_user
 
 # empty field
 @pytest.mark.positive
-@pytest.mark.parametrize(
-    "test_username, test_password",
-    [
-        ("", "Password123"),
-        ("admin", ""),
-    ]
-)
-
+@pytest.mark.parametrize("test_username, test_password", empty_data)
 
 def test_login_requires_username_and_password(login_page, test_username, test_password):
     # empty username or password

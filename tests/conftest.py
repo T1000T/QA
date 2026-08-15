@@ -1,4 +1,6 @@
 import pytest
+import pytest_html
+from pytest_html import extras
 import os
 from selenium import webdriver
 from automation.pages.login_page import LoginPage
@@ -38,3 +40,9 @@ def pytest_runtest_makereport(item, call):
             )
 
             driver.save_screenshot(screenshot_path)
+
+            # Attach screenshot to pytest-html
+            if hasattr(report, "extras"):
+                report.extras.append(
+                    pytest_html.extras.image(screenshot_path)
+                )
