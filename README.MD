@@ -20,21 +20,30 @@ The project includes:
 ```text
 .
 ├
+├───test site
+│   ├───CHANGELOG.md
+│   │   README.md
+│   │
+│   └───app
+│       └───app.js
+│           dashboard.html
+│           index.html
+│           style.css
 │
-├── tests/
-│   ├── positive_test.py
-│   ├── negative_test.py
-|   ├── conftest.py
-|   ├── values.py
-|   └── login_page.py
-├── test site/
-│   └── requirements/
-│       └── Software_Requirements.md
-│   └── app/
-│       ├── app.js
-│       ├── dashboard.html
-│       ├── aindex.html
-|       └── style.css
+├───tests
+|   └───conftest.py
+|       negative_test.py
+|       positive_test.py
+|       pytest.ini
+|       report.html
+|       requirements.txt
+|
+├───automation
+|       └───pages
+|           ├───login_page.py
+|           |
+|           └───configuration
+|               └───values.py
 
 ```
 
