@@ -70,7 +70,7 @@ Instead of defining the same setup logic inside every test function, it can be d
 
 ### `login_page.py`
 
-This file contains reusable class for browser initialize and login page features.
+This file contains reusable class for browser initialize and login page features, loaded from conftest.py.
 
 ### `values.py`
 
@@ -93,6 +93,11 @@ Contains positive test cases that verify that the application behaves correctly 
 Contains negative test cases that verify that the application correctly handles invalid input and unexpected scenarios.
 
 The test functions use different sets of input values, allowing the same test logic to be executed multiple times with different test data.
+
+tests are marked with testing sets, to run only one set of tests use the marker names in pytest.ini:
+```bash
+pytest -m positive
+```
 
 ---
 
