@@ -40,11 +40,12 @@ The project includes:
 |
 ├───automation
 |       └───pages
-|           ├───login_page.py
-|           |
-|           └───configuration
-|               └───values.py
-
+|       |   ├───login_page.py
+|       |   |
+|       |   └───configuration
+|       |       └───values.py
+|       └───test_data
+|           └───login_data.py
 ```
 
 ---
