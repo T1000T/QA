@@ -24,6 +24,15 @@ jobs:
 
       - name: Run tests
         env:
-          ENVIRONMENT: LOCAL
+          ENV: LOCAL
         run: |
-          pytest -v -c automation/pytest.ini --html=report.html
+          pytest -v -c automation/pytest.ini --html=test-results/report.html --self-contained-html
+
+      - name: Upload test artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            report.html
+            screenshots/

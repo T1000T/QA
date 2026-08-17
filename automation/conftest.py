@@ -32,10 +32,10 @@ def pytest_runtest_makereport(item, call):
         driver = item.funcargs.get("driver")
 
         if driver:
-            os.makedirs("screenshots", exist_ok=True)
+            os.makedirs("test-results/screenshots", exist_ok=True)
 
             screenshot_path = os.path.join(
-                "screenshots",
+                "test-results/screenshots",
                 f"{item.name}.png"
             )
 
