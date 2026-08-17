@@ -34,5 +34,5 @@ jobs:
         with:
           name: test-results
           path: |
-            report.html
-            screenshots/
+            test-results/report.html
+            test-results/screenshots/
