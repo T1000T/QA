@@ -9,6 +9,10 @@ BASE_URLS = {
     "LOCAL": (PROJECT_ROOT / "test site" / "app" / "index.html").as_uri(),
 }
 
+if ENV not in BASE_URLS:
+    raise ValueError(f"ENV {ENV} not found")
+
+
 BASE_URL = BASE_URLS[ENV]
 
 print(ENV)

@@ -1,5 +1,4 @@
 import pytest
-from config.settings import BASE_URL
 from test_data.login_data import *
 
 # out of boundaries
