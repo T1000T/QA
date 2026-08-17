@@ -1,9 +1,9 @@
 import pytest
 import pytest_html
-from pytest_html import extras
 import os
+from pytest_html import extras
 from selenium import webdriver
-from automation.pages.login_page import LoginPage
+from pages.login_page import LoginPage
 
 
 @pytest.fixture(scope="function")

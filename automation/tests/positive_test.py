@@ -1,5 +1,5 @@
 import pytest
-from automation.test_data.login_data import *
+from test_data.login_data import *
 
 # successful_login
 @pytest.mark.positive

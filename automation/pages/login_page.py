@@ -1,7 +1,8 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from automation.pages.configuration import values
+from config import values
+from config.settings import BASE_URL
 
 wait_time = 50
 
@@ -13,7 +14,7 @@ class LoginPage:
         self.wait = WebDriverWait(driver, wait_time)
 
     def open(self):
-        self.driver.get(values.site)
+        self.driver.get(BASE_URL)
 
     def login(self, username, password):
         self.enter_username(username)

@@ -1,5 +1,6 @@
 import pytest
-from automation.test_data.login_data import *
+from config.settings import BASE_URL
+from test_data.login_data import *
 
 # out of boundaries
 @pytest.mark.negative
