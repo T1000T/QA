@@ -26,4 +26,4 @@ jobs:
         env:
           ENVIRONMENT: LOCAL
         run: |
-          pytest -v
+          pytest -v -c automation/pytest.ini --html=report.html
