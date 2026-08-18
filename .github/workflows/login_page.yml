@@ -2,7 +2,13 @@ name: QA Automation Tests
 
 on:
   push:
-  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'manual run'
+        required: true
 
 jobs:
   test:
@@ -24,7 +30,7 @@ jobs:
 
       - name: Run tests
         env:
-          ENV: LOCAL
+          ENV: PROD
         run: |
           pytest -v -c automation/pytest.ini --html=test-results/report.html --self-contained-html
 
