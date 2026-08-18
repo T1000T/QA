@@ -15,41 +15,6 @@ The project includes:
 
 ---
 
-## Project Structure
-
-```text
-.
-├
-├───test site
-│   ├───CHANGELOG.md
-│   │   README.md
-│   │
-│   └───app
-│       └───app.js
-│           dashboard.html
-│           index.html
-│           style.css
-│
-├───tests
-|   └───conftest.py
-|       negative_test.py
-|       positive_test.py
-|       pytest.ini
-|       report.html
-|       requirements.txt
-|
-├───automation
-|       └───pages
-|       |   ├───login_page.py
-|       |   |
-|       |   └───configuration
-|       |       └───values.py
-|       └───test_data
-|           └───login_data.py
-```
-
----
-
 ## Python & Pytest
 
 The tests are executed using **pytest**.
