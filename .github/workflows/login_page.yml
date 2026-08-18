@@ -7,8 +7,9 @@ on:
   workflow_dispatch:
     inputs:
       reason:
-        description: 'manual run'
+        description: 'Manual run'
         required: true
+        default: 'Manual run'
 
 jobs:
   test:
