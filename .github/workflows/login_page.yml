@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+      - qa
+      - dev
   workflow_dispatch:
     inputs:
       reason:
@@ -29,11 +31,25 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Determine environment
+        shell: bash
+        run: |
+          if [[ "${GITHUB_REF_NAME}" == "main" ]]; then
+            echo "ENV=PROD" >> "$GITHUB_ENV"
+          elif [[ "${GITHUB_REF_NAME}" == "qa" ]]; then
+            echo "ENV=QA" >> "$GITHUB_ENV"
+          elif [[ "${GITHUB_REF_NAME}" == "dev" ]]; then
+            echo "ENV=DEV" >> "$GITHUB_ENV"
+          else
+            echo "Unknown branch: ${GITHUB_REF_NAME}"
+            exit 1
+          fi
+
       - name: Run tests
         env:
-          ENV: PROD
+          ENV: $GITHUB_ENV
         run: |
-          pytest -v -c automation/pytest.ini --html=test-results/report.html --self-contained-html
+          pytest -v -c automation/pytest.ini --html=test-$GITHUB_ENV/results/report.html --self-contained-html
 
       - name: Upload test artifacts
         if: always()
@@ -41,5 +57,5 @@ jobs:
         with:
           name: test-results
           path: |
-            test-results/report.html
-            test-results/screenshots/
+            test-results/$GITHUB_ENV/report.html
+            test-results/$GITHUB_ENV/screenshots/
