@@ -28,6 +28,10 @@ For example:
 
 This allows pytest to automatically discover and execute the tests.
 
+### `\test site\requirements\software_requirements.md`
+
+System Requirements Specification (SRS) file, explain what the software must do and how it must perform.
+
 ### `conftest.py`
 
 This file contains reusable **fixtures and setup functions**.
