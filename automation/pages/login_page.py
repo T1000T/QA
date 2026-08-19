@@ -4,7 +4,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from config import values
 from config.settings import BASE_URL
 
-wait_time = 50
+wait_time = 5
 
 
 class LoginPage:

@@ -1,5 +1,4 @@
 import pytest
-import pytest_html
 import os
 from pytest_html import extras
 from selenium import webdriver
@@ -46,5 +45,5 @@ def pytest_runtest_makereport(item, call):
             # Attach screenshot to pytest-html
             if hasattr(report, "extras"):
                 report.extras.append(
-                    pytest_html.extras.image(screenshot_path)
+                    extras.image(screenshot_path)
                 )
