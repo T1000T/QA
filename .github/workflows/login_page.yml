@@ -49,7 +49,7 @@ jobs:
         env:
           ENV: ${{ env.ENV }}
         run: |
-          pytest -v -c automation/pytest.ini --html=test-$ENV/results/report.html --self-contained-html
+          pytest -v -c automation/pytest.ini --html=test-results/$ENV/report.html --self-contained-html
 
       - name: Upload test artifacts
         if: always()

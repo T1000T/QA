@@ -5,6 +5,8 @@ from pytest_html import extras
 from selenium import webdriver
 from pages.login_page import LoginPage
 
+ENV = os.getenv("ENV", "LOCAL")
+
 
 @pytest.fixture(scope="function")
 def driver():
@@ -32,10 +34,10 @@ def pytest_runtest_makereport(item, call):
         driver = item.funcargs.get("driver")
 
         if driver:
-            os.makedirs("test-results/screenshots", exist_ok=True)
+            os.makedirs(f"test-results/{ENV}/screenshots", exist_ok=True)
 
             screenshot_path = os.path.join(
-                "test-results/screenshots",
+                f"test-results/{ENV}/screenshots",
                 f"{item.name}.png"
             )
 
