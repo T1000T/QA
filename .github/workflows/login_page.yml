@@ -44,13 +44,12 @@ jobs:
             echo "Unknown branch: ${GITHUB_REF_NAME}"
             exit 1
           fi
-          echo "$ENV"
 
       - name: Run tests
         env:
-          ENV: $ENV
+          ENV: ${{ env.ENV }}
         run: |
-          pytest -v -c automation/pytest.ini --html=test-$GITHUB_ENV/results/report.html --self-contained-html
+          pytest -v -c automation/pytest.ini --html=test-$ENV/results/report.html --self-contained-html
 
       - name: Upload test artifacts
         if: always()
@@ -58,5 +57,5 @@ jobs:
         with:
           name: test-results
           path: |
-            test-results/$GITHUB_ENV/report.html
-            test-results/$GITHUB_ENV/screenshots/
+            test-results/$ENV/report.html
+            test-results/$ENV/screenshots/
