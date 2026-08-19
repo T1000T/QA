@@ -48,7 +48,6 @@ def test_username_and_password_are_case_sensitive(login_page, casesensitive_user
 @pytest.mark.parametrize("test_username, test_password", empty_data)
 
 def test_login_requires_username_and_password(login_page, test_username, test_password):
-    # empty username or password
     login_page.open()
     login_page.login(test_username, test_password)
     login_page.click_login()
@@ -58,8 +57,8 @@ def test_login_requires_username_and_password(login_page, test_username, test_pa
     assert "Username and password are required" in message
 
 
-@pytest.mark.positive
 # Verify that clicking Forgot Password displays the reset confirmation
+@pytest.mark.positive
 def test_forgot_password(login_page):
     login_page.open()
     login_page.click_forgot_password()
