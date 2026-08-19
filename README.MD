@@ -75,7 +75,7 @@ pytest -m positive
 
 ### STD
 
-The **System Test Document (STD)** describes:
+The **Software Test Description (STD)** describes:
 
 * What is being tested
 * Test objectives
