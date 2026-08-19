@@ -44,11 +44,11 @@ jobs:
             echo "Unknown branch: ${GITHUB_REF_NAME}"
             exit 1
           fi
-          echo "$GITHUB_ENV"
+          echo "$ENV"
 
       - name: Run tests
         env:
-          ENV: $GITHUB_ENV
+          ENV: $ENV
         run: |
           pytest -v -c automation/pytest.ini --html=test-$GITHUB_ENV/results/report.html --self-contained-html
 
