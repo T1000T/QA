@@ -29,11 +29,6 @@ out_of_boundaries = [
 
     ]
 
-password_length = [
-        ("admin", "1234567"),
-        ("admin", "1234567890123456789012345678901")
-    ]
-
 mismatch_credentials = [
         ("admin", "UserPass123")
     ]

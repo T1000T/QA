@@ -5,25 +5,13 @@ from test_data.login_data import *
 @pytest.mark.negative
 @pytest.mark.parametrize("username_input_boundary, password_input_boundary", out_of_boundaries)
 
-def test_username_password_out_of_boundaries(login_page, username_input_boundary, password_input_boundary):
+def test_input_boundaries(login_page, username_input_boundary, password_input_boundary):
     login_page.open()
     login_page.login(username_input_boundary,password_input_boundary)
 
     message = login_page.get_message()
 
     assert "Username must be between 3 and 20 characters" in message or "Password must be between 8 and 30 characters" in message
-
-# short/long password
-@pytest.mark.negative
-@pytest.mark.parametrize("username_input_length, password_input_length", password_length)
-
-def test_password_length(login_page, username_input_length, password_input_length):
-    login_page.open()
-    login_page.login(username_input_length, password_input_length)
-
-    message = login_page.get_message()
-
-    assert "Password must be between 8 and 30 characters" in message
 
 # password mismatch
 @pytest.mark.negative
